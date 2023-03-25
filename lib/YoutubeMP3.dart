@@ -18,11 +18,12 @@ class YoutubeMP3 extends StatefulWidget {
 
 List<String> videoTypes = <String>[
   'Audio - mp3',
-  'Video - 1080p',
-  'Video - 720p',
-  'Video - 480p',
-  'Video - 360p',
-  'Video - 144p'
+  'Video - Auto',
+  // 'Video - 1080p',
+  // 'Video - 720p',
+  // 'Video - 480p',
+  // 'Video - 360p',
+  // 'Video - 144p'
 ];
 
 class _YoutubeMP3State extends State<YoutubeMP3> {
@@ -110,11 +111,13 @@ class _YoutubeMP3State extends State<YoutubeMP3> {
     });
 
     if (ftype != null &&
-        (ftype.contains('1080') ||
-            ftype.contains('720') ||
-            ftype.contains('480') ||
-            ftype.contains('360') ||
-            ftype.contains('144'))) {
+        (
+          // ftype.contains('1080') ||
+          //   ftype.contains('720') ||
+          //   ftype.contains('480') ||
+          //   ftype.contains('360') ||
+          //   ftype.contains('144') ||
+            ftype.contains('Auto'))) {
       ftype = ".mp4";
     }
 
@@ -148,7 +151,7 @@ class _YoutubeMP3State extends State<YoutubeMP3> {
         isDownloading = false;
       });
       Toast.show(
-        "Permission Denied",
+        "Cannot download video. Please try again later.",
         duration: 2,
         backgroundColor: Colors.red,
         webTexColor: Colors.black,
@@ -320,11 +323,12 @@ class _YoutubeMP3State extends State<YoutubeMP3> {
 
   String getKType() {
     if (dropdownVideoType.contains("Audio")) return video?.kMp3 ?? '';
-    if (dropdownVideoType.contains("1080")) return video?.kMp4_1080p ?? '';
-    if (dropdownVideoType.contains("720")) return video?.kMp4_720p ?? '';
-    if (dropdownVideoType.contains("480")) return video?.kMp4_480p ?? '';
-    if (dropdownVideoType.contains("360")) return video?.kMp4_360p ?? '';
-    if (dropdownVideoType.contains("144")) return video?.kMp4_144p ?? '';
+    if (dropdownVideoType.contains("Auto")) return video?.kMp4_auto ?? '';
+    // if (dropdownVideoType.contains("1080")) return video?.kMp4_1080p ?? '';
+    // if (dropdownVideoType.contains("720")) return video?.kMp4_720p ?? '';
+    // if (dropdownVideoType.contains("480")) return video?.kMp4_480p ?? '';
+    // if (dropdownVideoType.contains("360")) return video?.kMp4_360p ?? '';
+    // if (dropdownVideoType.contains("144")) return video?.kMp4_144p ?? '';
 
     return '';
   }
